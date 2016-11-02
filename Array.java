@@ -9,18 +9,19 @@
 public class Array {
 	private int[] array;
 
-	//constructor for Array class
+	// constructor for Array class
 	public Array(int inArray) {
 		array = new int[inArray];
 	}
-
+	
+	//this method fills the array
 	public void fill() {
 		for (int i = 0; i < array.length; i++) {
 			array[i] = (int) (Math.random() * 10);
 		}
 	}
 
-	//this method prints the array and the formatting of the array
+	// this method prints the array and the formatting of the array
 	public void print() {
 		int count = 0;
 		for (int i = 0; i < array.length; i++) {
@@ -53,7 +54,7 @@ public class Array {
 		}
 	}
 
-	//this method sorts the array from smallest to largest value
+	// this method sorts the array from smallest to largest value
 	public void sort() {
 		boolean swap = true;
 		int num;
@@ -71,8 +72,49 @@ public class Array {
 			}
 		}
 	}
+	
+	//finds the average of array
+	public double average(int[] inputArray) {
+		int sum = 0;
 
-	//shows how often a number is returned from the array
+		for (int i = 0; i < inputArray.length; i++) {
+			sum = sum + inputArray[i];
+		}
+		double average = (double) sum / inputArray.length;
+		return average;
+	}
+
+	//finds the maximum value of array
+	public int maxValue(int[] inputArray) {
+		int max = inputArray[0];
+		for (int i = 0; i < inputArray.length; i++)
+			if (inputArray[i] > max) {
+				max = inputArray[i];
+			}
+		return max;
+
+	}
+
+	//finds the minimum value of the array
+	public int minValue(int[] inputArray) {
+		int min = inputArray[0];
+		for (int i = 0; i < inputArray.length; i++) {
+			if (inputArray[i] < min) {
+				min = inputArray[i];
+			}
+		}
+		return min;
+	}
+
+	//prints the max, min, and average values
+	public void printStats() {
+		System.out.println();
+		System.out.println("Average Value: " + average(array));
+		System.out.println("Maximum Value: " + maxValue(array));
+		System.out.println("Minimum Value: " + minValue(array));
+	}
+
+	// shows how often a number is returned from the array
 	public void printFrequency() {
 		int[] counter = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		for (int i = 0; i < array.length; i++) {
@@ -85,7 +127,7 @@ public class Array {
 
 	public static void main(String[] args) {
 
-		//creates new instance of Array class
+		// creates new instance of Array class
 		Array a = new Array(5);
 		a.fill();
 		System.out.println("Original:");
@@ -95,10 +137,11 @@ public class Array {
 		a.print();
 		System.out.println("Frequencies:");
 		a.printFrequency();
-
+		a.printStats();
+		
 		System.out.println();
 
-		//creates new instance of Array class
+		// creates new instance of Array class
 		Array b = new Array(10);
 		b.fill();
 		System.out.println("Original:");
@@ -108,6 +151,8 @@ public class Array {
 		b.print();
 		System.out.println("Frequencies:");
 		b.printFrequency();
+		b.printStats();
 
 	}
 }
+
